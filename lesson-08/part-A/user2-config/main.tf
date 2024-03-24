@@ -7,10 +7,10 @@ resource "aws_vpc" "user2-vpc" {
 }
 
 module "webserver-user2" {
-    source         = "../modules/webserver"
+  source         = "../modules/webserver"
   ami            = "ami-0b8b44ec9a8f90422"
   vpc_id         = aws_vpc.my_vpc.id
   instance_type  = "t2.micro"
-  webserver_name = "User2's"
+  webserver_name = "User2's machine"
   cidr_block     = "10.0.0.0/16"
 }
