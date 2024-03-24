@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_vpc" "user2-vpc" {
-  cidr_block = "10.0.0.0/24"
+  cidr_block = "10.0.0.0/16"
 }
 
 module "webserver-user2" {
@@ -12,5 +12,5 @@ module "webserver-user2" {
   vpc_id         = aws_vpc.user2-vpc.id
   instance_type  = "t2.micro"
   webserver_name = "User2's"
-  cidr_block     = "10.0.0.0/24"
+  cidr_block     = aws_vpc.user2-vpc.cidr_block
 }
